@@ -1306,33 +1306,43 @@ A continuación, desarrolla los siguientes pasos para cada uno de los modelos so
 # and the target variable is in a column called 'tipo_financiamiento'
 # Replace 'data_frame_tipo_financiamiento' and 'tipo_financiamiento' with your actual DataFrame and column names
 # Write you code here
+X = data_frame_tipo_financiamiento.drop(columns=['tipo_financiamiento'])
+y = data_frame_tipo_financiamiento['tipo_financiamiento']
 
 # Split the data into training and testing sets using startified_train_test_split
 # You can adjust the test_size parameter as needed
 # 'random_state' ensures reproducibility of results
 # Write you code here
+X_train, X_test, y_train, y_test = startified_train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Create the custom model
 # You can customize the parameters based on your requirements
 # Write you code here
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 
 # Train the model on the training data
 # Write you code here
+rf_model.fit(X_train, y_train)
 
 # Make predictions on the testing data
 # Write you code here
+y_pred = rf_model.predict(X_test)
 
 """### **Evaluación del modelo - (Nombre Modelo)**"""
 
 # Evaluate accuracy the model
 # Write you code here
-
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 # Plot accuracy the model over the time - use plot_accuracy_scores
 #plot_accuracy_scores(rf_model,X_train,y_train,X_test,y_test,nparts=5,jobs=2)
 
 # Print classifitacion report using classification_report
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
 
 # Plot confusion matrix using plot_confusion_matrix
+plot_confusion_matrix(confusion_matrix(y_test, y_pred), tipo_financiamiento_mapping)
+plot_accuracy_scores(rf_model, X_train, y_train, X_test, y_test, nparts=5, jobs=2)
 
 """### **Pasos para el entrenamiento del modelo  a comparar - (LogisticRegression)**"""
 
