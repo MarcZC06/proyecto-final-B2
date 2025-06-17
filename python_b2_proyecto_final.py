@@ -621,7 +621,12 @@ def get_value_counts_non_numeric_columns(df):
     # write your code here
     #Get non-numeric columns
     #pass
-
+def get_value_counts_non_numeric_columns(df):
+    non_numeric_cols = find_non_numeric_columns(df)
+    value_counts_dict = {}
+    for col in non_numeric_cols:
+        value_counts_dict[col] = df[col].value_counts().to_dict()
+    return value_counts_dict
 """*Imprime los conteos de las columnas no numéricas.*"""
 
 #Write your code here for df_retailbank
