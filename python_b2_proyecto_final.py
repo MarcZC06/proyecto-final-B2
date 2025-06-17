@@ -10,11 +10,11 @@ Original file is located at
 
 ## **Información del estudiante**
 ---
-* **Título**:   
+* **Título**: Proyecto Final B2  
 * **Autor**: Marc Zafra Carmona
 * **Correo**: mzafrar@uoc.edu
 * **Fecha**: 19 Junio 2025
-* **Salida**: ipynb, predicciones.csv
+* **Salida**: .py, predicciones.csv
 ---
 
 ### **Contexto**:
